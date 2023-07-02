@@ -6,10 +6,11 @@ class Crawler:
     '''
     Crawl a web page and all pages linked to it
     '''
-    def __init__(self, base_url, max_depth, output):
+    def __init__(self, base_url, max_depth, output, headers):
         self.base_url  = urlparse(base_url)
         self.max_depth = max_depth
         self.output    = output
+        self.headers   = headers
 
         self.extensions = ['.js', '.png', '.jpg', '.jpeg', '.gif', '.css', '.pdf', '.doc', '.docx', '.svg', '.ico', '.xml', '.json', '.txt', '.mp3', '.mp4', '.avi', '.wmv', '.mov', '.flv', '.swf', '.zip', '.rar', '.tar', '.gz', '.bz2', '.7z', '.exe', '.jar', '.apk', '.iso', '.dmg', '.torrent', '.woff', '.woff2', '.ttf', '.otf', '.eot', '.psd', '.ai', '.eps', '.ps', '.xps', '.mpg', '.mpeg', '.ogg', '.mid', '.midi', '.wma', '.wax', '.m4a', '.m4p', '.m4b', '.m4r', '.aac', '.wav', '.flac', '.ape', '.wv', '.3gp', '.mkv', '.webm', '.m3u', '.m3u8', '.asf', '.asx', '.vob', '.m3u', '.m3u8', '.pls', '.wpl', '.b4s', '.xspf', '.dat', '.ifo', '.mov', '.qt', '.wmv', '.mpg', '.mpeg', '.avi', '.divx', '.ogm', '.mkv', '.mp4', '.m4v', '.mp4v', '.mpv', '.vob', '.qt', '.nsv', '.rm', '.rmvb', '.flv', '.swf', '.avchd', '.webm', '.html', '.htm', '.jsp', '.jspx', '.css', '.js', '.action', '.do', '.py', '.rb', '.xml', '.rss', '.svg', '.cgi', '.dll', '.jsp', '.jspx', '.pl', '.cgi', '.htaccess', '.htpasswd', '.bak', '.config', '.sql', '.ini', '.log', '.sh', '.htc', '.dat', '.inc', '.inf', '.dist', '.distz', '.inc']
         self.visited    = set()
@@ -24,7 +25,7 @@ class Crawler:
         Returns:
             list: List of all links found on the page
         '''
-        response = requests.get(url)
+        response = requests.get(url, headers=self.headers)
         soup = BeautifulSoup(response.content, "html.parser")
         links = []
 
@@ -61,7 +62,7 @@ class Crawler:
             if link not in self.visited:
                 parsed_link = urlparse(link)
                 if parsed_link.netloc == self.base_url.netloc:
-                    self.crawl(link, self.max_depth, current_depth + 1)
+                    self.crawl(link, current_depth + 1)
 
     def process(self):
         '''

@@ -30,12 +30,12 @@ pip3 install -r requirements.txt
 To use the crawler, you need to provide a URL to crawl. Optionally, you can specify the maximum depth to crawl and the output file to save the results.
 
 ```bash
-python3 crawler.py url [-h] [-m MAX_DEPTH] [-o OUTPUT]
+python3 crawler.py url [-h] [-m MAX_DEPTH] [-o OUTPUT] [--headers]
 ```
 
 ## Example
 ```bash
-python3 crawler.py https://www.example.com -m 2 -o results.txt
+python3 crawler.py https://www.example.com -m 2 -o results.txt --headers "Authorization: Bearer token" "Content-Type: application/json"
 ```
 
 ## License
