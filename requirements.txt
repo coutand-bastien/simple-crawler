@@ -1,0 +1,5 @@
+argparse
+pyfiglet
+requests
+BeautifulSoup
+urlparse
