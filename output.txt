@@ -1,0 +1,4 @@
+https://e-shop.preprod.guyhoquet-ecommerce.hegyd.net/saml2/login
+https://e-shop.preprod.guyhoquet-ecommerce.hegyd.net/connexion
+https://e-shop.preprod.guyhoquet-ecommerce.hegyd.net/
+https://e-shop.preprod.guyhoquet-ecommerce.hegyd.net/mot-de-passe-oublie
