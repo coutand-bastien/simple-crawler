@@ -21,6 +21,18 @@ The crawler script requires the following dependencies:
 * [urllib](https://docs.python.org/3/library/urllib.html)
 
 ## Installation
+To install the tool , run the following command:
+1. Clone the repository:
+```bash
+https://github.com/coutand-bastien/simple-crawler.git
+```
+2. Navigate to the project directory:
+
+```bash
+cd simple-crawler
+```
+
+3. Install the required dependencies:
 To install the dependencies, run the following command:
 ```bash
 pip3 install -r requirements.txt
@@ -30,12 +42,23 @@ pip3 install -r requirements.txt
 To use the crawler, you need to provide a URL to crawl. Optionally, you can specify the maximum depth to crawl and the output file to save the results.
 
 ```bash
-python3 crawler.py url [-h] [-m MAX_DEPTH] [-o OUTPUT] [--headers]
+python3 simple-crawler.py [-h] [-m MAX_DEPTH] [-o OUTPUT] [--headers HEADERS] url
+
+Crawl a website and all pages linked to it
+
+positional arguments:
+  url                                   URL to crawl
+
+options:
+  -h, --help                            Show this help message and exit
+  -m MAX_DEPTH, --max-depth MAX_DEPTH   Maximum depth to crawl
+  -o OUTPUT, --output OUTPUT            Output  file to save results
+  --headers HEADERS                     Specify the header value
 ```
 
 ## Example
 ```bash
-python3 crawler.py https://www.example.com -m 2 -o results.txt --headers "Authorization: Bearer token" "Content-Type: application/json"
+python3 simple-crawler.py https://www.example.com -m 2 -o results.txt --headers "Authorization: Bearer token" "Content-Type: application/json"
 ```
 
 ## License
